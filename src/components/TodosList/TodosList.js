@@ -37,12 +37,28 @@ const TodosList = ({ todos, setTodos }) => {
     // console.log(newArr, "after update");
   }
   let totalRating = Math.round(totalPoints/todos.length);
-  let averageRating = Math.round(yourRating/totalRating)
+  let averageRating = Math.round(yourRating/totalRating);
+
+  const dropdownHandler = (e)=>{
+    if(e.target.value==="asc"){
+      setTodos([...todos].sort((a,b)=>a.points-b.points))
+    }
+    else{
+      setTodos([...todos].sort((a,b)=>b.points-a.points))
+    }
+    // e.target.value==="asc" ? setTodos([...todos].sort((a,b)=>a.points-b.points)) : setTodos([...todos].sort((a,b)=>b.points-a.points))
+    // console.log(e.target.value);
+  }
   return (
     <div className="todos-list">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0px 20px" }}>
         <h1>Todos List - {todos.length}</h1>
         <div style={{display : "flex",justifyContent: "space-between",gap : "20px"}}>
+          <select onChange={dropdownHandler}>
+            <option hidden >Select</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
           <h4>Average Rating : {averageRating}</h4>
           <h4>Points Scored : {pointsScored}/{totalPoints}</h4>
         </div>
