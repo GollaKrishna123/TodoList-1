@@ -1,0 +1,17 @@
+.navbar{
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    height: 80px;
+    
+}
+.menu-list{
+    list-style-type: none;
+    display: flex;
+}
+.menu-list li{
+    padding-right: 20px;
+}
